@@ -674,6 +674,20 @@ html[dir="rtl"] {
     overflow: scroll;
 }
 
+.select2-wrapper {
+    > input[type=text],
+    > div > input[type=text],
+    > select,
+    > div > select {
+        opacity: 0;
+    }
+
+    > select[multiple],
+    > div > select[multiple] {
+        height: @select2-height-base + 2;
+    }
+}
+
 // Bootstrap
 // -------------------------
 
