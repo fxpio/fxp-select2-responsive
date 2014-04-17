@@ -59,17 +59,11 @@
         var select2 = $(event.target).data('select2');
         var $dropdown = select2.dropdown;
 
-        select2.openIsInit = (undefined != select2.opts.ajax);
-
-        $dropdown.off('mouseup', '.select2-results');
-        $dropdown.on('mouseup', '.select2-results', $.proxy(function (e) {
-            if (this.openIsInit && $(e.target).closest(".select2-result-selectable").length > 0) {
-                this.highlightUnderEvent(e);
-                this.selectHighlighted(e);
-            }
-
-            this.openIsInit = true;
-        }, select2));
+        $dropdown.off('mouseup mousedown focusin click touchstart touchmove touchend mousemove-filtered', '.select2-results');
+        $dropdown.on('touchmove', '.select2-results', $.proxy(select2.touchMoved, select2));
+        $dropdown.on('touchstart touchend', '.select2-results', $.proxy(select2.clearTouchMoved, select2));
+        $dropdown.on('click', blockEvent);
+        $dropdown.on('mouseup', '.select2-results', $.proxy(onSelectAction, select2));
 
         if (0 == $('.select2-drop-footer', $dropdown).size()) {
             $dropdown.append([
@@ -81,11 +75,7 @@
             ].join(''));
         }
 
-        $dropdown.on('click', '.select2-drop-footer .select2-btn-cancel', select2, function(event) {
-            event.preventDefault();
-            event.stopPropagation();
-            event.data.close();
-        });
+        $dropdown.on('click', '.select2-drop-footer .select2-btn-cancel', select2, onCancelAction);
     }
 
     /**
@@ -99,7 +89,51 @@
     function onClose (event) {
         var select2 = $(event.target).data('select2');
 
+        select2.dropdown.off('touchmove', '.select2-results');
+        select2.dropdown.off('touchstart touchend', '.select2-results');
+        select2.dropdown.off('click');
+        select2.dropdown.off('mouseup', '.select2-results');
         select2.dropdown.off('click', '.select2-drop-footer .select2-btn-cancel');
+    }
+
+    /**
+     * Action on click to cancel button.
+     *
+     * @param jQuery.Event event
+     *
+     * @this
+     * @private
+     */
+    function onCancelAction (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        event.data.close();
+    }
+
+    /**
+     * Action on click to item.
+     *
+     * @param jQuery.Event event
+     *
+     * @this (is select2 instance)
+     * @private
+     */
+    function onSelectAction (event) {
+        this.highlightUnderEvent(event);
+        this.selectHighlighted(event);
+    }
+
+    /**
+     * Prevents the default event.
+     *
+     * @param jQuery.Event event
+     *
+     * @this
+     * @private
+     */
+    function blockEvent (event) {
+        event.preventDefault();
+        event.stopPropagation();
     }
 
 
