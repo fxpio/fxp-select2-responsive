@@ -30,6 +30,12 @@
 
         var select2 = this.$element.data('select2');
 
+        if (!select2.opts.multiple) {
+            select2.selection.off('mousedown touchstart');
+            select2.selection.on("click touchend", 'abbr', $.proxy(onSelect2Clear, select2));
+            select2.selection.on("click touchend", $.proxy(onSelect2Open, select2));
+        }
+
         if ('resolve' == select2.opts.width) {
             select2.container.css('width', '');
         }
@@ -51,8 +57,62 @@
      * @this
      */
     Select2Responsive.prototype.destroy = function () {
+        var select2 = this.$element.data('select2');
+
+        if (!select2.opts.multiple) {
+            select2.selection.off("mousedown touchend", 'abbr', $.proxy(onSelect2Clear, select2));
+            select2.selection.off("mousedown touchend", $.proxy(onSelect2Open, select2));
+        }
+
         this.$element.removeData('st.select2responsive');
     };
+
+    /**
+     * Action on clear select2 value.
+     *
+     * @param jQuery.Event event
+     *
+     * @this (is select2 instance)
+     * @private
+     */
+    function onSelect2Clear (event) {
+        if (!this.isInterfaceEnabled()) return;
+        this.clear();
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        this.close();
+        this.selection.focus();
+    }
+
+    /**
+     * Action on open select2 dropdown.
+     *
+     * @param jQuery.Event event
+     *
+     * @this (is select2 instance)
+     * @private
+     */
+    function onSelect2Open (event) {
+        // Prevent IE from generating a click event on the body
+        var placeholder = $(document.createTextNode(''));
+
+        this.selection.before(placeholder);
+        placeholder.before(this.selection);
+        placeholder.remove();
+
+        if (!this.container.hasClass("select2-container-active")) {
+            this.opts.element.trigger($.Event("select2-focus"));
+        }
+
+        if (this.opened()) {
+            this.close();
+        } else if (this.isInterfaceEnabled()) {
+            this.open();
+        }
+
+        event.preventDefault();
+        event.stopPropagation();
+    }
 
     /**
      * Action on opened select2 dropdown.
