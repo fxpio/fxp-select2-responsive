@@ -27,6 +27,12 @@
 
         this.$element.on('select2-open.st.select2responsive', $.proxy(onOpen, this));
         this.$element.on('select2-close.st.select2responsive', $.proxy(onClose, this));
+
+        var select2 = this.$element.data('select2');
+
+        if ('resolve' == select2.opts.width) {
+            select2.container.css('width', '');
+        }
     };
 
     /**
@@ -57,7 +63,7 @@
      * @private
      */
     function onOpen (event) {
-        var select2 = $(event.target).data('select2');
+        var select2 = this.$element.data('select2');
         var $dropdown = select2.dropdown;
 
         $dropdown.off('mouseup mousedown focusin click touchstart touchmove touchend mousemove-filtered', '.select2-results');
@@ -94,7 +100,7 @@
      * @private
      */
     function onClose (event) {
-        var select2 = $(event.target).data('select2');
+        var select2 = this.$element.data('select2');
 
         select2.dropdown.off('touchmove', '.select2-results');
         select2.dropdown.off('touchstart touchend', '.select2-results');
