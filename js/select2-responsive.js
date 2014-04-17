@@ -22,7 +22,7 @@
      * @this
      */
     var Select2Responsive = function (element, options) {
-        this.options  = $.extend({}, $.fn.hammerScroll.Constructor.DEFAULTS, Select2Responsive.DEFAULTS, options);
+        this.options  = $.extend({}, Select2Responsive.DEFAULTS, options);
         this.$element = $(element);
 
         this.$element.on('select2-open.st.select2responsive', $.proxy(onOpen, this));
