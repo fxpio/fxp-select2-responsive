@@ -35,7 +35,8 @@
      * @type Array
      */
     Select2Responsive.DEFAULTS = {
-        cancel: 'Cancel'
+        disableSearchFocus: true,
+        cancel:             'Cancel'
     };
 
     /**
@@ -76,6 +77,12 @@
         }
 
         $dropdown.on('click', '.select2-drop-footer .select2-btn-cancel', select2, onCancelAction);
+
+        if (this.options.disableSearchFocus) {
+            select2.search.attr('readonly', 'readonly');
+            $dropdown.focus();
+            select2.search.removeAttr('readonly');
+        }
     }
 
     /**
