@@ -146,6 +146,7 @@
 
         if (this.options.disableSearchFocus) {
             select2.search.attr('readonly', 'readonly');
+            select2.search.blur();
             $dropdown.focus();
             select2.search.removeAttr('readonly');
         }
