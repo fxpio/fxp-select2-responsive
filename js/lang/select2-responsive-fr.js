@@ -7,7 +7,12 @@
  * file that was distributed with this source code.
  */
 
-+function ($) {
+/*global jQuery*/
+
+/**
+ * @param {jQuery} $
+ */
+(function ($) {
     'use strict';
 
     // SELECT2 RESPONSIVE CLASS DEFINITION
@@ -17,4 +22,4 @@
         cancel: 'Annuler'
     });
 
-}(jQuery);
+}(jQuery));
