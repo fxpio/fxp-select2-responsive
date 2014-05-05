@@ -240,9 +240,7 @@
     // SELECT2 RESPONSIVE PLUGIN DEFINITION
     // ====================================
 
-    old = $.fn.select2Responsive;
-
-    $.fn.select2Responsive = function (option, value) {
+    function Plugin(option, value) {
         return this.each(function () {
             var $this   = $(this),
                 data    = $this.data('st.select2responsive'),
@@ -260,8 +258,11 @@
                 data[option](value);
             }
         });
-    };
+    }
 
+    old = $.fn.select2Responsive;
+
+    $.fn.select2Responsive             = Plugin;
     $.fn.select2Responsive.Constructor = Select2Responsive;
 
 
@@ -281,7 +282,7 @@
     $(window).on('load', function () {
         $('[data-select2-responsive="true"]').each(function () {
             var $this = $(this);
-            $this.select2Responsive($this.data());
+            Plugin.call($this, $this.data());
         });
     });
 
