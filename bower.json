@@ -7,10 +7,9 @@
   "description": "A responsive feature for Select2",
   "main": "js/select2-responsive.js",
   "keywords": [
-    "datetime",
-    "date",
-    "time",
-    "jquery"
+    "jquery",
+    "select2",
+    "responsive"
   ],
   "license": "MIT",
   "homepage": "https://github.com/sonatra/sonatra-select2-responsive",
