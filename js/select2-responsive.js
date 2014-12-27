@@ -82,6 +82,7 @@
         $dropdown.on('touchstart touchend', '.select2-results', $.proxy(select2.clearTouchMoved, select2));
         $dropdown.on('click', blockEvent);
         $dropdown.on('mouseup', '.select2-results', select2, onSelectAction);
+        $dropdown.addClass('select2-drop-responsive');
 
         if (0 === $('.select2-drop-footer', $dropdown).size()) {
             $dropdown.append([
@@ -121,6 +122,7 @@
         select2.dropdown.off('click');
         select2.dropdown.off('mouseup', '.select2-results');
         select2.dropdown.off('click', '.select2-drop-footer .select2-btn-cancel');
+        select2.dropdown.addClass('select2-drop-responsive');
     }
 
     /**
