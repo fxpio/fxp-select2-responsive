@@ -1,0 +1,30 @@
+{
+  "name": "sonatra-sonatra-select2-responsive",
+  "version": "1.0.0",
+  "authors": [
+    "François Pluchino <francois.pluchino@sonatra.com>"
+  ],
+  "description": "A responsive feature for Select2",
+  "main": "js/select2-responsive.js",
+  "keywords": [
+    "datetime",
+    "date",
+    "time",
+    "jquery"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/sonatra/sonatra-select2-responsive",
+  "dependencies": {
+    "jquery": ">=1.11.0",
+    "select2": ">=3.5"
+  },
+  "devDependencies": {
+    "bootstrap": ">=3.0",
+    "font-awesome": ">=4.2"
+  },
+  "ignore": [
+    "examples",
+    "doc",
+    "README.md"
+  ]
+}
