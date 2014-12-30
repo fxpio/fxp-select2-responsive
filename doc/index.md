@@ -19,7 +19,7 @@ Add library in your `bower.json`:
 ```json
 {
     "dependencies": {
-        "sonatra-select2-responsive: "latest"
+        "sonatra-select2-responsive": "latest"
     }
 }
 ```
