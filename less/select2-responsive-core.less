@@ -253,6 +253,9 @@
 
     position: relative;
     z-index: @zindex-select2 + 2;
+    background-color: @select2-search-background;
+    color: @select2-search-color;
+    border-bottom: 2px solid @select2-search-background;
 
     white-space: nowrap;
 
@@ -280,7 +283,9 @@
         outline: 0;
         font-size: 1em;
 
-        border: 1px solid @input-border;
+        border: 1px solid @select2-search-border-color;
+        border-bottom-color: @select2-search-border-bottom-color;
+        background: transparent;
         .border-top-radius(0);
         .border-bottom-radius(0);
 
@@ -355,7 +360,7 @@
 
 .select2-results {
     max-height: 200px;
-    padding: 4px;
+    padding: 14px 0;
     margin: 0;
     position: relative;
     overflow-x: hidden;
@@ -604,8 +609,17 @@
 
     &.select2-container-active {
         .select2-choices {
-            border: 1px solid @input-border-focus;
+            //border: 1px solid @input-border-focus;
+            background-color: @select2-search-background;
+            color: @select2-search-color;
+            border-bottom: 2px solid @select2-search-background;
             outline: none;
+        }
+
+        .select2-search-field {
+            input {
+                color: @select2-search-color;
+            }
         }
     }
 
@@ -867,7 +881,9 @@ html[dir="rtl"] {
                 width: auto !important;
                 padding: 20px;
                 max-height: @select2-search-header-height;
-                border-bottom: 2px solid @input-border-focus;
+                background-color: @select2-search-background;
+                color: @select2-search-color;
+                border-bottom: 2px solid @select2-search-background;
 
                 &:after {
                     content: @select2-search-icon;
@@ -890,7 +906,9 @@ html[dir="rtl"] {
                     padding: 4px 20px 4px 5px !important;
                     margin: 0 !important;
 
-                    border: 1px solid @input-border;
+                    color: inherit;
+                    border: 1px solid @select2-search-border-color;
+                    border-bottom-color: @select2-search-border-bottom-color;
                 }
             }
         }
@@ -911,11 +929,9 @@ html[dir="rtl"] {
 
         .select2-search {
             position: fixed;
-            background-color: @input-bg;
             padding: 20px;
             max-height: @select2-search-header-height;
             margin-top: -@select2-search-header-height;
-            border-bottom: 2px solid @input-border-focus;
             width: auto;
             left: @select2-responsive-padding;
             right: @select2-responsive-padding;
