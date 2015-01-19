@@ -50,6 +50,7 @@
             $dropdown = select2.dropdown;
 
         $dropdown.addClass('select2-drop-responsive');
+        select2.container.addClass('select2-drop-responsive');
         $('.select2-drop-mask').addClass('select2-drop-responsive');
         $dropdown.on('click.st.select2responsive', '.select2-drop-footer .select2-btn-cancel', select2, onCancelAction);
 
@@ -80,6 +81,7 @@
 
         $dropdown.off('click.st.select2responsive', '.select2-drop-footer .select2-btn-cancel', onCancelAction);
         $dropdown.removeClass('select2-drop-responsive');
+        select2.container.addClass('select2-drop-responsive');
         $('.select2-drop-mask').removeClass('select2-drop-responsive');
     }
 
