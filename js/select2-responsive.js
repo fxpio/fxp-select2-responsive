@@ -21,34 +21,6 @@
     'use strict';
 
     /**
-     * Prevents the default event.
-     *
-     * @param {jQuery.Event|Event} event
-     *
-     * @private
-     */
-    function blockEvent(event) {
-        event.preventDefault();
-        event.stopPropagation();
-    }
-
-    /**
-     * Action on click to item.
-     *
-     * @param {jQuery.Event|Event} event
-     *
-     * @typedef {Select2} Event.data The select2 instance
-     *
-     * @private
-     */
-    function onSelectAction(event) {
-        var select2 = event.data;
-
-        select2.highlightUnderEvent(event);
-        select2.selectHighlighted(event);
-    }
-
-    /**
      * Action on click to cancel button.
      *
      * @param {jQuery.Event|Event} event
@@ -77,30 +49,18 @@
             select2 = self.$element.data('select2'),
             $dropdown = select2.dropdown;
 
-        $dropdown.off('mouseup mousedown focusin click touchstart touchmove touchend mousemove-filtered', '.select2-results');
-        $dropdown.on('touchmove', '.select2-results', $.proxy(select2.touchMoved, select2));
-        $dropdown.on('touchstart touchend', '.select2-results', $.proxy(select2.clearTouchMoved, select2));
-        $dropdown.on('click', blockEvent);
-        $dropdown.on('mouseup', '.select2-results', select2, onSelectAction);
         $dropdown.addClass('select2-drop-responsive');
+        $('.select2-drop-mask').addClass('select2-drop-responsive');
+        $dropdown.on('click.st.select2responsive', '.select2-drop-footer .select2-btn-cancel', select2, onCancelAction);
 
         if (0 === $('.select2-drop-footer', $dropdown).size()) {
-            $dropdown.append([
-                '<div class="select2-drop-footer">',
-                '<span class="select2-drop-footer-btn select2-btn-cancel">',
-                '<a href="#" tabindex="-1">' + self.options.cancel + '</a>',
-                '</span>',
+            $dropdown.append(
+                '<div class="select2-drop-footer">' +
+                    '<span class="select2-drop-footer-btn select2-btn-cancel">' +
+                        '<a href="#" tabindex="-1">' + self.options.cancel + '</a>' +
+                    '</span>' +
                 '</div>'
-            ].join(''));
-        }
-
-        $dropdown.on('click', '.select2-drop-footer .select2-btn-cancel', select2, onCancelAction);
-
-        if (self.options.disableSearchFocus) {
-            select2.search.attr('readonly', 'readonly');
-            select2.search.blur();
-            $dropdown.focus();
-            select2.search.removeAttr('readonly');
+            );
         }
     }
 
@@ -115,69 +75,12 @@
      */
     function onClose(event) {
         var self = event.data,
-            select2 = self.$element.data('select2');
+            select2 = self.$element.data('select2'),
+            $dropdown = select2.dropdown;
 
-        select2.dropdown.off('touchmove', '.select2-results');
-        select2.dropdown.off('touchstart touchend', '.select2-results');
-        select2.dropdown.off('click');
-        select2.dropdown.off('mouseup', '.select2-results');
-        select2.dropdown.off('click', '.select2-drop-footer .select2-btn-cancel');
-        select2.dropdown.addClass('select2-drop-responsive');
-    }
-
-    /**
-     * Action on clear select2 value.
-     *
-     * @param {jQuery.Event|Event} event
-     *
-     * @typedef {Select2} Event.data The select2 instance
-     *
-     * @private
-     */
-    function onSelect2Clear(event) {
-        var select2 = event.data;
-
-        if (!select2.isInterfaceEnabled()) {
-            return;
-        }
-
-        select2.clear();
-        event.preventDefault();
-        event.stopImmediatePropagation();
-        select2.close();
-        select2.selection.focus();
-    }
-
-    /**
-     * Action on open select2 dropdown.
-     *
-     * @param {jQuery.Event|Event} event
-     *
-     * @typedef {Select2} Event.data The select2 instance
-     *
-     * @private
-     */
-    function onSelect2Open(event) {
-        var select2 = event.data,
-            // Prevent IE from generating a click event on the body
-            placeholder = $(document.createTextNode(''));
-
-        select2.selection.before(placeholder);
-        placeholder.before(select2.selection);
-        placeholder.remove();
-
-        if (!select2.container.hasClass("select2-container-active")) {
-            select2.opts.element.trigger($.Event("select2-focus"));
-        }
-
-        if (select2.opened()) {
-            select2.close();
-        } else if (select2.isInterfaceEnabled()) {
-            select2.open();
-        }
-
-        event.preventDefault();
-        event.stopPropagation();
+        $dropdown.off('click.st.select2responsive', '.select2-drop-footer .select2-btn-cancel', onCancelAction);
+        $dropdown.removeClass('select2-drop-responsive');
+        $('.select2-drop-mask').removeClass('select2-drop-responsive');
     }
 
     // SELECT2 RESPONSIVE CLASS DEFINITION
@@ -192,19 +95,16 @@
      * @this Select2Responsive
      */
     var Select2Responsive = function (element, options) {
+        var select2;
+
         this.options  = $.extend({}, Select2Responsive.DEFAULTS, options);
         this.$element = $(element);
 
-        this.$element.on('select2-open.st.select2responsive', null, this, onOpen);
-        this.$element.on('select2-close.st.select2responsive', null, this, onClose);
+        this.$element
+            .on('select2-open.st.select2responsive', null, this, onOpen)
+            .on('select2-close.st.select2responsive', null, this, onClose);
 
-        var select2 = this.$element.data('select2');
-
-        if (!select2.opts.multiple) {
-            select2.selection.off('mousedown touchstart');
-            select2.selection.on("click touchend", 'abbr', select2, onSelect2Clear);
-            select2.selection.on("click touchend", null, select2, onSelect2Open);
-        }
+        select2 = this.$element.data('select2');
 
         if ('resolve' === select2.opts.width) {
             select2.container.css('width', '');
@@ -218,8 +118,7 @@
      * @type {object}
      */
     Select2Responsive.DEFAULTS = {
-        disableSearchFocus: true,
-        cancel:             'Cancel'
+        cancel: 'Cancel'
     };
 
     /**
@@ -229,11 +128,10 @@
      */
     Select2Responsive.prototype.destroy = function () {
         var select2 = this.$element.data('select2');
-
-        if (!select2.opts.multiple) {
-            select2.selection.off("mousedown touchend", 'abbr', onSelect2Clear);
-            select2.selection.off("mousedown touchend", onSelect2Open);
-        }
+        select2.close();
+        this.$element
+            .off('select2-open.st.select2responsive', onOpen)
+            .off('select2-close.st.select2responsive', onClose);
 
         this.$element.removeData('st.select2responsive');
     };
