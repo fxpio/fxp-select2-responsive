@@ -18,7 +18,7 @@
     // SELECT2 RESPONSIVE CLASS DEFINITION
     // ===================================
 
-    $.extend($.fn.select2Responsive.Constructor.DEFAULTS, {
+    $.extend(true, $.fn.select2Responsive.Constructor.DEFAULTS, {
         cancel: 'Annuler'
     });
 
