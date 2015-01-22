@@ -79,13 +79,22 @@
         </div>
     </div>
 </form>
-<script src="../bower_components/jquery/dist/jquery.js"></script>
-<script src="../bower_components/select2/select2.js"></script>
-<script src="../js/select2-responsive.js"></script>
-<script src="../js/locale/select2-responsive-fr.js"></script>
 <script>
-    $('#form-select').select2();
-    $('#form-select-multi').select2();
+    var require = {
+        paths: {
+            'jquery': '../bower_components/jquery/dist/jquery',
+            'select2': '../bower_components/select2/select2',
+            'sonatra-select2-responsive': '../js/select2-responsive',
+            'sonatra-select2-responsive-locale': '../js/locale'
+        },
+        deps: ['sonatra-select2-responsive', 'sonatra-select2-responsive-locale/select2-responsive-fr'],
+        callback: function () {
+            $('#form-select').select2();
+            $('#form-select-multi').select2();
+            $(window).trigger('load');
+        }
+    };
 </script>
+<script src="../bower_components/requirejs/require.js" async="async"></script>
 </body>
 </html>
