@@ -7,12 +7,25 @@
  * file that was distributed with this source code.
  */
 
+/*global define*/
 /*global jQuery*/
 
 /**
  * @param {jQuery} $
+ *
+ * @typedef {object} define.amd
  */
-(function ($) {
+(function (factory) {
+    'use strict';
+
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(['jquery', 'sonatra-select2-responsive'], factory);
+    } else {
+        // Browser globals
+        factory(jQuery);
+    }
+}(function ($) {
     'use strict';
 
     // SELECT2 RESPONSIVE CLASS DEFINITION
@@ -22,4 +35,4 @@
         cancel: 'Annuler'
     });
 
-}(jQuery));
+}));
