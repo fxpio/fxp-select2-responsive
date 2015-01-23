@@ -87,6 +87,9 @@
             'sonatra-select2-responsive': '../js/select2-responsive',
             'sonatra-select2-responsive-locale': '../js/locale'
         },
+        shim: {
+            'select2': ['jquery']
+        },
         deps: ['sonatra-select2-responsive', 'sonatra-select2-responsive-locale/select2-responsive-fr'],
         callback: function () {
             $('#form-select').select2();
