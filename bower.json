@@ -14,7 +14,7 @@
   "license": "MIT",
   "homepage": "https://github.com/sonatra/sonatra-select2-responsive",
   "dependencies": {
-    "jquery": ">=2.1.0",
+    "jquery": "^2.1.0",
     "select2": "^4.0.0"
   },
   "devDependencies": {
