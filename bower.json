@@ -14,13 +14,13 @@
   "license": "MIT",
   "homepage": "https://github.com/sonatra/sonatra-select2-responsive",
   "dependencies": {
-    "jquery": ">=1.11.0",
-    "select2": ">=3.5"
+    "jquery": ">=2.1.0",
+    "select2": "^4.0.0"
   },
   "devDependencies": {
     "requirejs": "~2",
-    "bootstrap": ">=3.0",
-    "font-awesome": ">=4.2"
+    "bootstrap": "3.*",
+    "font-awesome": "4.*"
   },
   "ignore": [
     "examples",
