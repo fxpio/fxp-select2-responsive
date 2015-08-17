@@ -32,7 +32,7 @@
     // ===================================
 
     $.extend(true, $.fn.select2Responsive.Constructor.DEFAULTS, {
-        cancel: 'Annuler'
+        close: 'Fermer'
     });
 
 }));
