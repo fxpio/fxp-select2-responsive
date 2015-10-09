@@ -255,8 +255,6 @@
      * @this Select2Responsive
      */
     var Select2Responsive = function (element, options) {
-        var select2;
-
         this.options  = $.extend(true, {}, Select2Responsive.DEFAULTS, options);
         this.$element = $(element);
         this.$mask = null;
@@ -266,12 +264,6 @@
             .on('select2:close.st.select2responsive', null, this, onClose);
 
         $(window).on('resize.st.select2responsive', null, this, resizeHeightMax);
-
-        select2 = this.$element.data('select2');
-
-        if ('resolve' === select2.options.width) {
-            select2.$container.css('width', '');
-        }
     },
         old;
 
