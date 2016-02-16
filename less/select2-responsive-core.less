@@ -6,7 +6,7 @@
     .select2-drop-footer {
         display: table;
         width: 100%;
-        border-top: 1px solid @select2-btn-border;
+        border-top: 1px solid transparent;
         bottom: 0;
 
         .border-bottom-radius(@border-radius-base);
@@ -20,19 +20,12 @@
 
         > a {
             text-decoration: none;
-            color: @select2-btn-color;
-            background-color: @select2-btn-bg;
             padding: 5px;
             display: block;
 
-            border-left: 1px solid @select2-btn-border;
+            border-left: 1px solid transparent;
 
             .border-bottom-radius(@border-radius-base);
-
-            &:hover,
-            &focus {
-                background-color: @select2-btn-hover-bg;
-            }
         }
 
         &:first-child {
@@ -56,7 +49,6 @@
 
 @media (max-width: @screen-xs-max) {
     .select2-dropdown-responsive-mask {
-        background: @select2-mask-bg;
         opacity: 1;
     }
 
@@ -75,11 +67,11 @@
             .border-bottom-radius(@border-radius-base) !important;
 
             &.select2-dropdown--above {
-                border-bottom: 1px solid @input-border;
+                border-bottom: 1px solid transparent;
             }
 
             &.select2-dropdown--below {
-                border-top: 1px solid @input-border;
+                border-top: 1px solid transparent;
             }
 
             .select2-search__field.multi-responsive {

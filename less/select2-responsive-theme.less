@@ -1,0 +1,40 @@
+//
+// Select2 Responsive Theme
+// --------------------------------------------------
+
+.select2-dropdown-responsive {
+    .select2-drop-footer {
+        border-top-color: @select2-btn-border;
+    }
+
+    .select2-drop-footer-btn {
+        > a {
+            color: @select2-btn-color;
+            background-color: @select2-btn-bg;
+            border-left-color: @select2-btn-border;
+
+            &:hover,
+            &focus {
+                background-color: @select2-btn-hover-bg;
+            }
+        }
+    }
+}
+
+@media (max-width: @screen-xs-max) {
+    .select2-dropdown-responsive-mask {
+        background: @select2-mask-bg;
+    }
+
+    .select2-dropdown-responsive {
+        .select2-dropdown {
+            &.select2-dropdown--above {
+                border-bottom-color: @input-border;
+            }
+
+            &.select2-dropdown--below {
+                border-top-color: @input-border;
+            }
+        }
+    }
+}
