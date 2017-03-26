@@ -21,7 +21,7 @@
 
     if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
-        define(['jquery', 'select2'], factory);
+        define(['jquery', 'select2/dist/js/select2'], factory);
     } else {
         // Browser globals
         factory(jQuery);
