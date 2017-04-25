@@ -12,16 +12,8 @@ This library require:
 Installation
 ------------
 
-Installation is a quick:
-
-Add library in your `bower.json`:
-
-```json
-{
-    "dependencies": {
-        "sonatra-select2-responsive": "latest"
-    }
-}
+```
+npm install @sonatra/select2-responsive --save
 ```
 
 Launch bower:
@@ -37,12 +29,6 @@ Dev installation
 
 ```
 npm install
-```
-
-### Use Bower
-
-```
-bower install
 ```
 
 ### Use grunt
