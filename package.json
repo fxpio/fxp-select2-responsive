@@ -16,7 +16,7 @@
     "url": "https://github.com/sonatra/sonatra-select2-responsive.git"
   },
   "bugs": {
-    "url" : "https://github.com/sonatra/sonatra-select2-responsive/issues"
+    "url": "https://github.com/sonatra/sonatra-select2-responsive/issues"
   },
   "engines": {},
   "main": "js/select2-responsive.js",
