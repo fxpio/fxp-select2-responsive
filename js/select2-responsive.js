@@ -168,7 +168,7 @@
         select2.$dropdown.addClass('select2-dropdown-responsive');
         select2.$dropdown.on('click.st.select2responsive', '.select2-drop-footer .select2-btn-close', select2, onCloseButtonAction);
 
-        if (0 === $('.select2-drop-footer', select2.$dropdown).size()) {
+        if (0 === $('.select2-drop-footer', select2.$dropdown).length) {
             select2.$results.parent().after(
                 '<div class="select2-drop-footer">' +
                     '<span class="select2-drop-footer-btn select2-btn-close">' +
@@ -291,7 +291,7 @@
             this.$mask.remove();
         }
 
-        if (0 === $dropFooter.size()) {
+        if (0 === $dropFooter.length) {
             $dropFooter.remove();
         }
 
