@@ -75,6 +75,10 @@
             resultsHeight = select2.$results.outerHeight(),
             maxHeight;
 
+        if (0 === currentHeight) {
+            return;
+        }
+
         top = isNaN(top) ? 0 : top;
         bottom = isNaN(bottom) ? 0 : bottom;
         maxHeight = windowHeight - top - bottom - (currentHeight - resultsHeight);
