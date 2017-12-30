@@ -1,7 +1,7 @@
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -170,7 +170,7 @@
 
         select2.$container.addClass('select2-container-responsive');
         select2.$dropdown.addClass('select2-dropdown-responsive');
-        select2.$dropdown.on('click.st.select2responsive', '.select2-drop-footer .select2-btn-close', select2, onCloseButtonAction);
+        select2.$dropdown.on('click.fxp.select2responsive', '.select2-drop-footer .select2-btn-close', select2, onCloseButtonAction);
 
         if (0 === $('.select2-drop-footer', select2.$dropdown).length) {
             select2.$results.parent().after(
@@ -191,7 +191,7 @@
             self.$dropMultiSearch = $('<span class="select2-search select2-search--dropdown"></span>');
             self.$dropMultiSearch.append(self.$cloneMultiSearch);
             select2.$results.parent().parent().prepend(self.$dropMultiSearch);
-            self.$multiSearchField.on('click.st.select2responsive', null, self, preventMultiSearchAction);
+            self.$multiSearchField.on('click.fxp.select2responsive', null, self, preventMultiSearchAction);
         }
 
         resizeHeightMax(event);
@@ -211,7 +211,7 @@
             select2 = self.$element.data('select2'),
             $dropdown = select2.$dropdown;
 
-        $dropdown.off('click.st.select2responsive', '.select2-drop-footer .select2-btn-close', onCloseButtonAction);
+        $dropdown.off('click.fxp.select2responsive', '.select2-drop-footer .select2-btn-close', onCloseButtonAction);
         select2.$container.removeClass('select2-container-responsive');
         select2.$dropdown.removeClass('select2-dropdown-responsive');
 
@@ -226,7 +226,7 @@
 
         if (undefined !== self.$dropMultiSearch) {
             self.$dropMultiSearch.remove();
-            self.$multiSearchField.off('click.st.select2responsive', preventMultiSearchAction);
+            self.$multiSearchField.off('click.fxp.select2responsive', preventMultiSearchAction);
             self.$multiSearchField.css({
                 position: '',
                 border: '',
@@ -264,10 +264,10 @@
         this.$mask = null;
 
         this.$element
-            .on('select2:open.st.select2responsive', null, this, onOpen)
-            .on('select2:close.st.select2responsive', null, this, onClose);
+            .on('select2:open.fxp.select2responsive', null, this, onOpen)
+            .on('select2:close.fxp.select2responsive', null, this, onClose);
 
-        $(window).on('resize.st.select2responsive', null, this, resizeHeightMax);
+        $(window).on('resize.fxp.select2responsive', null, this, resizeHeightMax);
     },
         old;
 
@@ -299,11 +299,11 @@
             $dropFooter.remove();
         }
 
-        $(window).off('resize.st.select2responsive', resizeHeightMax);
+        $(window).off('resize.fxp.select2responsive', resizeHeightMax);
 
         this.$element
-            .off('select2:open.st.select2responsive', onOpen)
-            .off('select2:close.st.select2responsive', onClose);
+            .off('select2:open.fxp.select2responsive', onOpen)
+            .off('select2:close.fxp.select2responsive', onClose);
 
         this.$element.removeData('st.select2responsive');
     };

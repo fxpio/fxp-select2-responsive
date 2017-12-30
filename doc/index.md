@@ -13,7 +13,7 @@ Installation
 ------------
 
 ```
-npm install @sonatra/select2-responsive --save
+npm install @fxp/select2-responsive --save
 ```
 
 Launch bower:

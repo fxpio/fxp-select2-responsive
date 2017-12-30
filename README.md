@@ -1,5 +1,5 @@
-Sonatra Select2 Responsive
-==========================
+Fxp Select2 Responsive
+======================
 
 This jquery plugin is a responsive feature for Select2.
 
@@ -26,10 +26,10 @@ This javascript component is under the MIT license. See the complete license:
 About
 -----
 
-Sonatra Select2 Responsive is a [sonatra](https://github.com/sonatra) initiative.
-See also the list of [contributors](https://github.com/sonatra/sonatra-select2-responsive/graphs/contributors).
+Fxp Select2 Responsive is a [François Pluchino](https://github.com/francoispluchino) initiative.
+See also the list of [contributors](https://github.com/fxpio/fxp-select2-responsive/graphs/contributors).
 
 Reporting an issue or a feature request
 ---------------------------------------
 
-Issues and feature requests are tracked in the [Github issue tracker](https://github.com/sonatra/sonatra-select2-responsive/issues).
+Issues and feature requests are tracked in the [Github issue tracker](https://github.com/fxpio/fxp-select2-responsive/issues).

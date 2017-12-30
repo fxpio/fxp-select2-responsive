@@ -1,8 +1,8 @@
 {
-  "name": "@sonatra/select2-responsive",
+  "name": "@fxp/select2-responsive",
   "version": "1.0.0",
   "license": "MIT",
-  "author": "François Pluchino <francois.pluchino@sonatra.com>",
+  "author": "François Pluchino <francois.pluchino@gmail.com>",
   "contributors": [],
   "description": "A responsive feature for Select2",
   "keywords": [
@@ -10,13 +10,13 @@
     "select2",
     "responsive"
   ],
-  "homepage": "https://github.com/sonatra/sonatra-select2-responsive",
+  "homepage": "https://github.com/fxpio/fxp-select2-responsive",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sonatra/sonatra-select2-responsive.git"
+    "url": "https://github.com/fxpio/fxp-select2-responsive.git"
   },
   "bugs": {
-    "url": "https://github.com/sonatra/sonatra-select2-responsive/issues"
+    "url": "https://github.com/fxpio/fxp-select2-responsive/issues"
   },
   "engines": {},
   "main": "js/select2-responsive.js",
