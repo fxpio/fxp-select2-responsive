@@ -20,7 +20,7 @@
 
     if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
-        define(['jquery', 'fxp-select2-responsive'], factory);
+        define(['jquery', '../select2-responsive'], factory);
     } else {
         // Browser globals
         factory(jQuery);
