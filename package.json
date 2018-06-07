@@ -26,6 +26,7 @@
   "engines": {},
   "main": "js/select2-responsive.js",
   "dependencies": {
+    "@fxp/jquery-pluginify": "github:fxpio/fxp-jquery-pluginify#master",
     "jquery": "^2.2.0||^3.2.0",
     "select2": "^4.0.0"
   },
