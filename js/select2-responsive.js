@@ -11,6 +11,7 @@ import pluginify from '@fxp/jquery-pluginify';
 import BaseI18nPlugin from '@fxp/jquery-pluginify/js/i18n-plugin';
 import $ from "jquery";
 import {onClose, onOpen, resizeHeightMax} from "./utils/events";
+import 'select2';
 
 /**
  * Select2 Responsive class.
