@@ -13,7 +13,7 @@ import 'select2/dist/css/select2.css';
 import 'select2-bootstrap-theme/dist/select2-bootstrap.css';
 import '../less/select2-responsive.less';
 import '../js/select2-responsive';
-import '../js/locale/select2-responsive-fr';
+import '../js/locale/fr';
 
 $('#form-select').select2();
 $('#form-select-multi').select2();
