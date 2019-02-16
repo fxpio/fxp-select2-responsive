@@ -21,7 +21,9 @@
   "scripts": {
     "dev": "encore dev",
     "serve": "encore dev-server --port 9000",
-    "build": "encore production"
+    "build:style": "lessc less/select2-responsive.less dist/select2-responsive.css",
+    "build:module": "rollup -c",
+    "build": "yarn run build:module && yarn run build:style"
   },
   "engines": {},
   "main": "js/select2-responsive.js",
@@ -36,6 +38,11 @@
     "font-awesome": "^4.7.0",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
+    "rollup": "^1.1.2",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-uglify": "^6.0.2",
     "select2-bootstrap-theme": "^0.1.0-beta.10"
   }
 }
