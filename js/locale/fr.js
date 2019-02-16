@@ -7,9 +7,9 @@
  * file that was distributed with this source code.
  */
 
-import Select2Responsive from '../select2-responsive';
+import FxpSelect2Responsive from '../select2-responsive';
 
-Select2Responsive.locales = {
+FxpSelect2Responsive.locales = {
     fr: {
         close: 'Fermer'
     }
